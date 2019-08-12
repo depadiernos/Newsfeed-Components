@@ -113,6 +113,14 @@ const createArticle = article => {
   let div = document.createElement("div");
   div.className = "article";
 
+  let readButton = document.createElement("button");
+  readButton.className = 'close'
+  readButton.textContent = "x";
+  readButton.addEventListener("click", () => {
+    div.style.display = "none";
+  });
+  div.appendChild(readButton);
+
   let title = document.createElement("h2");
   title.textContent = article.title;
   div.appendChild(title);
@@ -129,13 +137,14 @@ const createArticle = article => {
     div.appendChild(p);
   });
 
-  expandButton = document.createElement("span");
+  let expandButton = document.createElement("span");
   expandButton.className = "expandButton";
-  expandButton.textContent = "Toggle View"
+  expandButton.textContent = "Toggle View";
   expandButton.addEventListener("click", () => {
     div.classList.toggle("article-open");
   });
   div.appendChild(expandButton);
+
 
   return div;
 };
