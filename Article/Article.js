@@ -131,11 +131,11 @@ const createArticle = article => {
 
   expandButton = document.createElement("span");
   expandButton.className = "expandButton";
-  div.appendChild(expandButton);
-
-  div.addEventListener("click", event => {
+  expandButton.textContent = "Toggle View"
+  expandButton.addEventListener("click", () => {
     div.classList.toggle("article-open");
   });
+  div.appendChild(expandButton);
 
   return div;
 };
