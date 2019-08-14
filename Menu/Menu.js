@@ -42,7 +42,7 @@ const menuCreator = menuItems => {
   menuItems.forEach(item => {
     let li = document.createElement("li");
     li.textContent = item;
-    menu.appendChild(li);
+    ul.appendChild(li);
   });
   let menuButtonHandler = document.querySelector(".menu-button");
 menuButtonHandler.addEventListener("click", event => {
@@ -52,4 +52,4 @@ menuButtonHandler.addEventListener("click", event => {
 };
 
 let menu = menuCreator(menuItems)
-document.body.appendChild(menu)
+document.querySelector('.header').appendChild(menu)
