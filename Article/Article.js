@@ -3,7 +3,7 @@
 const data = [
   {
     title: 'Lambda School Students: "We\'re the best!"',
-    date: 'Nov 5th, 2018',
+    date: "Nov 5th, 2018",
     firstParagraph: `Lucas ipsum dolor sit amet ben twi'lek padmé darth darth darth moff hutt organa twi'lek. Ben amidala secura skywalker lando
         moff wicket tatooine luke.Solo wampa wampa calrissian yoda moff.Darth grievous darth gonk darth hutt.Darth baba skywalker
         watto fett jango maul han.Mon ewok sidious sidious lando kenobi grievous gamorrean solo.Yoda wedge utapau darth calamari.
@@ -23,8 +23,8 @@ const data = [
         moff calamari mon obi-wan. Solo grievous lando coruscant. Jinn darth palpatine obi-wan mon.`
   },
   {
-    title: 'Javascript and You, ES6',
-    date: 'May 7th, 2019',
+    title: "Javascript and You, ES6",
+    date: "May 7th, 2019",
     firstParagraph: `Alohamora wand elf parchment, Wingardium Leviosa hippogriff, house dementors betrayal. Holly, Snape centaur portkey ghost
         Hermione spell bezoar Scabbers. Peruvian-Night-Powder werewolf, Dobby pear-tickle half-moon-glasses, Knight-Bus. Padfoot
         snargaluff seeker: Hagrid broomstick mischief managed. Snitch Fluffy rock-cake, 9 ¾ dress robes I must not tell lies. Mudbloods
@@ -43,8 +43,8 @@ const data = [
         sing above the ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match.`
   },
   {
-    title: 'React vs Angular vs Vue',
-    date: 'June 7th, 2019',
+    title: "React vs Angular vs Vue",
+    date: "June 7th, 2019",
     firstParagraph: `Bulbasaur Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ivysaur Lorem ipsum dolor sit amet, consectetur adipiscing
         elit. Venusaur Lorem ipsum dolor sit amet, consectetur adipiscing elit. Charmander Lorem ipsum dolor sit amet, consectetur
         adipiscing elit. Charmeleon Lorem ipsum dolor sit amet, consectetur adipiscing elit. Charizard Lorem ipsum dolor sit amet,
@@ -71,8 +71,8 @@ const data = [
         Castform Lotad the power that's inside Burnt Berry Makuhita. Ghost Ariados Corphish Dusclops Golbat Gligar Zweilous.`
   },
   {
-    title: 'Professional Software Development in 2019',
-    date: 'Jan 1st, 2019',
+    title: "Professional Software Development in 2019",
+    date: "Jan 1st, 2019",
     firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
           hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
           Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
@@ -85,30 +85,75 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: "Lambda School WebPT8 in 2019",
+    date: "May 28th, 2019",
+    firstParagraph: `Bacon ipsum dolor amet pork belly rump beef fatback spare ribs, turkey tail biltong jowl drumstick t-bone shankle pork loin. Pork chop brisket kielbasa pig, tail andouille landjaeger cupim strip steak. Bacon kevin shankle jowl strip steak. Turducken venison tenderloin cupim hamburger, tri-tip shoulder pancetta chicken meatloaf kevin. Chuck doner turducken, tongue spare ribs kevin fatback landjaeger alcatra pork belly short ribs ball tip kielbasa. `,
+
+    secondParagraph: `Shank pork loin frankfurter cupim, pork landjaeger sirloin spare ribs ground round boudin buffalo corned beef porchetta. Pastrami corned beef capicola shank meatloaf porchetta biltong buffalo rump filet mignon pork brisket ground round. Tri-tip tenderloin porchetta, shoulder drumstick pastrami pig pancetta sausage ribeye buffalo. Shoulder pastrami brisket t-bone kielbasa pork loin. Beef ribs jowl alcatra meatloaf tenderloin, leberkas pig kevin filet mignon rump frankfurter ball tip. Biltong landjaeger beef ribs brisket kielbasa. Sausage ham tail, ribeye cupim rump prosciutto drumstick.
+
+    `,
+
+    thirdParagraph: `Pancetta chuck andouille sirloin porchetta capicola. Kevin brisket shankle turkey capicola picanha meatloaf ham beef pork loin rump short loin pork pancetta ball tip. Ham swine bresaola pork ribeye cow short loin pork chop pig shoulder short ribs buffalo. Pork belly doner ham hock, bacon ground round shoulder tail.`
   }
 ];
 
-/* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
-  
-  <div class="article">
-    <h2>{title of the article}</h2>
-    <p class="date">{date of the article}</p>
+// Step 1: Create a function that creates a component. You will want your component to look like the template below:
+//   <div class="article">
+//     <h2>{title of the article}</h2>
+//     <p class="date">{date of the article}</p>
+//     {three separate paragraph elements}
+//     <span class='expandButton'></span>
+//   </div>
+//   Hint: You will need to use createElement more than once here!
+//   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each peice of the data object above.
 
-    {three separate paragraph elements}
+const createArticle = article => {
+  let div = document.createElement("div");
+  div.className = "article";
 
-    <span class='expandButton'></span>
-  </div>
+  let readButton = document.createElement("button");
+  readButton.className = 'close'
+  readButton.textContent = "x";
+  readButton.addEventListener("click", () => {
+    div.style.display = "none";
+  });
+  div.appendChild(readButton);
 
-  Hint: You will need to use createElement more than once here!
+  let title = document.createElement("h2");
+  title.textContent = article.title;
+  div.appendChild(title);
 
-  Your function should take either an object as it's one argument, or 5 separate arguments mapping to each peice of the data object above.
+  let date = document.createElement("p");
+  date.textContent = article.date;
+  date.className = "date";
+  div.appendChild(date);
 
-  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+  paragraphs = ["firstParagraph", "secondParagraph", "thirdParagraph"];
+  paragraphs.forEach(paragraph => {
+    let p = document.createElement("p");
+    p.textContent = article[`${paragraph}`];
+    div.appendChild(p);
+  });
 
-  Step 3: return the entire component.
+  let expandButton = document.createElement("span");
+  expandButton.className = "expandButton";
+  expandButton.textContent = "Toggle View";
+  expandButton.addEventListener("click", () => {
+    div.classList.toggle("article-open");
+  });
+  div.appendChild(expandButton);
 
-  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
 
-  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
+  return div;
+};
 
-*/
+data.map(article => {
+  document.querySelector(".articles").appendChild(createArticle(article));
+});
+
+// Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+// Step 3: return the entire component.
+// Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+// Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article
